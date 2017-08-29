@@ -1,0 +1,171 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:control="clr-namespace:Bibo.Control">
+    <ResourceDictionary.MergedDictionaries >
+        <ResourceDictionary Source="/Bibo.View;component/Control/SButton.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <Style x:Key="BorderPanelStyle" TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Height" Value="70"/>
+        <Setter Property="Margin" Value="0,0,0,0"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF18989" Offset="0"/>
+                    <GradientStop Color="#FFEA5555" Offset="0.25"/>
+                    <GradientStop Color="#FFDA0D0D" Offset="0.5"/>
+                    <GradientStop Color="#FFE24A4A" Offset="0.75"/>
+                    <GradientStop Color="#FFEC8282" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="MainButtonStyle" TargetType="{x:Type control:SButton}" BasedOn="{StaticResource DefaultSButtonStyle}">
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Width" Value="190"/>
+        <Setter Property="FIcon" Value="{x:Null}"/>
+        <Setter Property="Margin" Value="15,5,15,5"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF18989" Offset="0"/>
+                    <GradientStop Color="#FFEA5555" Offset="0.25"/>
+                    <GradientStop Color="#FFDA0D0D" Offset="0.5"/>
+                    <GradientStop Color="#FFF04848" Offset="0.75"/>
+                    <GradientStop Color="#FFF18181" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PressedBackground">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF16464" Offset="0"/>
+                    <GradientStop Color="#FFEC3333" Offset="0.25"/>
+                    <GradientStop Color="#FFEE0404" Offset="0.5"/>
+                    <GradientStop Color="#FFEC3333" Offset="0.75"/>
+                    <GradientStop Color="#FFF16464" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MouseOverBackground">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF76B6B" Offset="0"/>
+                    <GradientStop Color="#FFF73737" Offset="0.25"/>
+                    <GradientStop Color="#FFF00C0C" Offset="0.5"/>
+                    <GradientStop Color="#FFF73737" Offset="0.75"/>
+                    <GradientStop Color="#FFF76B6B" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="PressedForeground" Value="Gold" />
+        <Setter Property="MouseOverForeground" Value="Yellow" />
+        <Setter Property="CornerRadius" Value="0,0,25,25"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
+
+    </Style>
+
+    <Style x:Key="CirclyButtonStyle" TargetType="{x:Type control:SButton}" BasedOn="{StaticResource DefaultSButtonStyle}">
+        <Setter Property="Height" Value="42"/>
+        <Setter Property="Width" Value="42"/>
+        <Setter Property="Content" Value="{x:Null}"/>
+        <Setter Property="Margin" Value="15,5,15,5"/>
+        <Setter Property="FIconMargin" Value="0,0,0,0"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF18989" Offset="0"/>
+                    <GradientStop Color="#FFEA5555" Offset="0.25"/>
+                    <GradientStop Color="#FFDA0D0D" Offset="0.5"/>
+                    <GradientStop Color="#FFEE4646" Offset="0.75"/>
+                    <GradientStop Color="#FFEE7F7F" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PressedBackground">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF16464" Offset="0"/>
+                    <GradientStop Color="#FFEC3333" Offset="0.25"/>
+                    <GradientStop Color="#FFEE0404" Offset="0.5"/>
+                    <GradientStop Color="#FFEC3333" Offset="0.75"/>
+                    <GradientStop Color="#FFF16464" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MouseOverBackground">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF76B6B" Offset="0"/>
+                    <GradientStop Color="#FFF73737" Offset="0.25"/>
+                    <GradientStop Color="#FFF00C0C" Offset="0.5"/>
+                    <GradientStop Color="#FFF73737" Offset="0.75"/>
+                    <GradientStop Color="#FFF76B6B" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="PressedForeground" Value="Gold" />
+        <Setter Property="MouseOverForeground" Value="Yellow"/>
+        <Setter Property="CornerRadius" Value="25,25,25,25"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="1"/>
+
+    </Style>
+
+    <Style x:Key="MenuButtonStyle" TargetType="{x:Type control:SButton}" BasedOn="{StaticResource DefaultSButtonStyle}">
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="FIcon" Value="{x:Null}"/>
+        <Setter Property="Margin" Value="5,1,5,1"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="Padding" Value="5,2"/>
+        <Setter Property="Opacity" Value="0.9"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF3B0B0" Offset="0"/>
+                    <GradientStop Color="#FFEA5555" Offset="0.25"/>
+                    <GradientStop Color="#FFDA0D0D" Offset="0.5"/>
+                    <GradientStop Color="#FFEE4646" Offset="0.75"/>
+                    <GradientStop Color="#FFF3B0B0" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="PressedBackground">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF16464" Offset="0"/>
+                    <GradientStop Color="#FFEC3333" Offset="0.25"/>
+                    <GradientStop Color="#FFEE0404" Offset="0.5"/>
+                    <GradientStop Color="#FFEC3333" Offset="0.75"/>
+                    <GradientStop Color="#FFF16464" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MouseOverBackground">
+            <Setter.Value>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF76B6B" Offset="0"/>
+                    <GradientStop Color="#FFF73737" Offset="0.25"/>
+                    <GradientStop Color="#FFF00C0C" Offset="0.5"/>
+                    <GradientStop Color="#FFF73737" Offset="0.75"/>
+                    <GradientStop Color="#FFF76B6B" Offset="1"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="PressedForeground" Value="Gold"/>
+        <Setter Property="MouseOverForeground" Value="Yellow"/>
+        <Setter Property="CornerRadius" Value="0,0,0,0"/>
+        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+
+    </Style>
+</ResourceDictionary>

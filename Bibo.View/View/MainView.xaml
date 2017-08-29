@@ -1,0 +1,136 @@
+﻿<Window x:Class="Bibo.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="clr-namespace:Bibo.Control"
+        mc:Ignorable="d"  x:Name="mainView" WindowStartupLocation="CenterScreen"
+        Title="必博抽奖软件" Height="756" Width="1280" Background="#FFFB6060">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Bibo.View;component/View/Themes/MainViewStyleDirector.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>    
+    <Window.DataContext>
+        <Binding Path="Main" Source="{StaticResource Locator}"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" x:Name="ShowGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="TextBlock_MainTitle" Grid.Row="0"
+                       FontSize="48" HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" Margin="15,20,15,5"
+                       Text="主标题" Foreground="Yellow"/>
+            <TextBlock x:Name="TextBlock_SubTitle" Grid.Row="1"
+                       FontSize="36" HorizontalAlignment="Center" 
+                       VerticalAlignment="Center" Margin="15,5,15,20"
+                       Text="副标题" Foreground="Yellow"/>
+            <control:UC_RollerPanel x:Name="RollerPanel" Grid.Row="2" Margin="60,10" Visibility="Visible"></control:UC_RollerPanel>
+        </Grid>
+        <Border Grid.Row="1" Style="{StaticResource BorderPanelStyle}" Height="80">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <control:SButton x:Name="MainButton" Style="{StaticResource MainButtonStyle}" 
+                                     Content="任 务 菜 单" FontSize="24" Command="{Binding MainButton_Command}" ></control:SButton>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <control:SButton Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe873;" ToolTip="显示结果"
+                                     Command="{Binding ShowResult_Command}"></control:SButton>
+                    <control:SButton Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe86c;" ToolTip="打印结果"
+                                     Command="{Binding PrintResult}"></control:SButton>
+                    <control:SButton Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe85d;" ToolTip="撤销奖项"
+                                     Command="{Binding DeletePrize_Command}"></control:SButton>
+                    <control:SButton Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe86b;" ToolTip="增加奖项"
+                                     Command="{Binding AddPrize_Command}"></control:SButton>
+                </StackPanel>
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <control:SButton Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe877;" ToolTip="上一组"
+                                     Command="{Binding PreviousGroup_Command}"></control:SButton>
+                    <control:SButton x:Name="Button_SelectGroup" Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe85b;" Width="52"
+                                     Height="42" CornerRadius="15,15,15,15" ToolTip="选择奖项组"
+                                     Command="{Binding Button_SelectGroup_Command}"></control:SButton>
+                    <control:SButton Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe878;" ToolTip="下一组"
+                                     Command="{Binding NextGroup_Command}"></control:SButton>
+                    <control:SButton Style="{StaticResource CirclyButtonStyle}" FIcon="" Content="开始" Width="52"
+                                     CornerRadius="15,15,15,15" ToolTip="开始/停止"
+                                     Command="{Binding Start_Command}"></control:SButton>
+                </StackPanel>
+                <StackPanel Grid.Column="3" Orientation="Horizontal">
+                    <control:SButton x:Name="Button_Play" Style="{StaticResource CirclyButtonStyle}" 
+                                     FIcon="&#xe86a;" Margin="5"
+                                     ToolTip="播放" Command="{Binding Button_Play_Command}"/>
+                    <control:SButton x:Name="Button_Stop" Style="{StaticResource CirclyButtonStyle}" 
+                                     FIcon="&#xe880;"  Margin="5"
+                                     ToolTip="停止播放" Command="{Binding Button_Stop_Command}" />
+                    <control:SButton x:Name="Button_Mute" Style="{StaticResource CirclyButtonStyle}" 
+                                     FIcon="&#xe863;"  Margin="5"
+                                     ToolTip="静音" Command="{Binding Button_Mute_Command}"/>
+                    <Border Width="80" Height="30" BorderBrush="White" BorderThickness="1" Background="Transparent">
+                        <TextBlock x:Name="TextBlock_CurrentTime" Text="{Binding ShowTime}" Height="20" FontSize="14" TextAlignment="Center"
+                                   VerticalAlignment="Center" Foreground="White"></TextBlock>
+                    </Border>
+                    <control:SButton x:Name="Button_FullScreen" Style="{StaticResource CirclyButtonStyle}" FIcon="&#xe848;" ToolTip="全屏"
+                                     Command="{Binding Button_FullScreen_Command}" ></control:SButton>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Popup x:Name="PopMenu" PopupAnimation="Slide" Width="Auto" Height="Auto"
+                       PlacementTarget="{Binding ElementName=MainButton}" 
+                       Placement="Top"  VerticalOffset="-10"
+                       AllowsTransparency="True" StaysOpen="False">
+            <Border Background="#99CB5656" CornerRadius="10" BorderBrush="#FFF76E6E" BorderThickness="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="必博全能抽奖系统" TextWrapping="Wrap" Width="32" Foreground="Gold" VerticalAlignment="Bottom" FontSize="24" Margin="5"></TextBlock>
+                    <StackPanel Margin="5" Grid.Column="1" Background="#B2F9C2C2">
+                        <control:SButton Style="{StaticResource MenuButtonStyle}" Content="打开当前抽奖任务" 
+                                         Command="{Binding OpenCurrentTask_Command}"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}" Content="重新开始抽奖任务"
+                                         Command="{Binding ResetCurrentTask_Command}"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}"  Content="补抽中奖名额..."  
+                                        Command="{Binding CompensationTask_Command}"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}"  Content="显示中奖名单" 
+                                         Command="{Binding ShowResult_Command}"/>
+                        <Separator Margin="5,8"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}" Content="系统选项设置" 
+                                         Command="{Binding ShowSysOption_Command}"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}"  Content="抽奖名单管理" 
+                                         Command="{Binding ShowNameList_Command}"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}"  Content="中奖名单管理" 
+                                         Command="{Binding ShowWinnerManage_Command}"/>
+                        <Separator Margin="5,8" />
+                        <control:SButton Style="{StaticResource MenuButtonStyle}" Content="帮助和支持"
+                                         Command="{Binding ShowHelp_Command}"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}"  Content="锁定屏幕"  
+                                         Command="{Binding LockScreen_Command}"/>
+                        <control:SButton Style="{StaticResource MenuButtonStyle}"  Content="退出系统" 
+                                         Command="{Binding CloseMainView_Command}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Popup>
+        <MediaElement x:Name="MainMediaElement" Source="{Binding MusicFile}" IsMuted="{Binding ElementName=win,Path=IsMuted}"
+                      Margin="0,0,0,64" Volume="{Binding ElementName=win ,Path=Volume,Mode=TwoWay}"
+                       LoadedBehavior="Manual" 
+                      UnloadedBehavior="Stop" Stretch="Fill" Visibility="Collapsed" />    
+    </Grid>
+</Window>

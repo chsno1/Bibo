@@ -1,0 +1,67 @@
+﻿<Window x:Class="Bibo.View.StaffManageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Bibo.View"
+        xmlns:control="clr-namespace:Bibo.Control" 
+        mc:Ignorable="d" Background="{StaticResource WindowBackground}" Foreground="{StaticResource TextForeground}"
+        Title="StaffManageView" Height="460" Width="860">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries >
+                <ResourceDictionary Source="/Bibo.View;component/Control/SButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <Binding Path="StaffManage" Source="{StaticResource Locator}"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Margin="5" Background="Transparent"  Foreground="{StaticResource TextForeground}">
+            <MenuItem Header="数据"></MenuItem>
+            <MenuItem Header="名单组"></MenuItem>
+            <MenuItem Header="抽奖图片"></MenuItem>
+        </Menu>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Orientation="Horizontal" >
+            <control:SButton Style="{StaticResource DefaultSButtonStyle}" FIcon="&#xe96b;" Content="新建名单"/>
+            <control:SButton Style="{StaticResource DefaultSButtonStyle}" FIcon="&#xe96c;" Content="删除名单"/>
+            <control:SButton Style="{StaticResource DefaultSButtonStyle}" FIcon="&#xe971;" Content="修改名单"/>
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="1" MaxWidth="200"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="5">
+                <Border  BorderBrush="Blue" BorderThickness="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Expander IsExpanded="True" Width="150" Header="抽奖名单组" FontSize="18" Foreground="DarkBlue" Height="120" 
+                          ></Expander>
+                </Border>
+                <control:SButton Style="{StaticResource ToolButtonStyle}" FIcon="&#xe689;" Width="Auto" Content="设置抽奖图片" FontSize="16"/>
+            </StackPanel>
+            <GridSplitter Style="{StaticResource gridSplitterStyleForResizeColumns}"  Grid.Column="1" ></GridSplitter>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            <DataGrid Grid.Row="0" Style="{StaticResource DefaultDataGrid}" Background="{StaticResource WindowBackground}"></DataGrid>
+                <StatusBar Grid.Row="1" Background="{StaticResource WindowBackground}" Margin="1,5" BorderBrush="AliceBlue" BorderThickness="1">
+                    <StatusBarItem HorizontalAlignment="Center" >
+                        <TextBlock Text="条"></TextBlock>
+                    </StatusBarItem>
+                </StatusBar>
+            </Grid>
+            <control:StaffEditPanel Grid.Column="3" Margin="5,5,15,5"></control:StaffEditPanel>
+        </Grid>
+    </Grid>
+</Window>

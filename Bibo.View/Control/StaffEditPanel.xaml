@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="Bibo.Control.StaffEditPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Bibo.Control"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="150">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Bibo.View;component/Control/SButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="White" BorderThickness="1" Grid.Row="0" Height="120" Width="150">
+            <Image MinHeight="120" MinWidth="150"></Image>
+        </Border>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <local:SButton Style="{StaticResource SButton_Transparency}" FIcon="&#xe836;" Height="30" Margin="5,1"/>
+            <local:SButton Style="{StaticResource SButton_Transparency}" FIcon="&#xe870;" Height="30" Margin="5,1"/>
+            <local:SButton Style="{StaticResource SButton_Transparency}" FIcon="&#xe6f1;" Height="30" Margin="5,1"/>
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="姓名：" Margin="1,1"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="备注：" Margin="1,1"/>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="分组：" Margin="1,1"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="1,1"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="1,1"/>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="1,1"/>
+        </Grid>
+        <StackPanel Orientation="Horizontal" Margin="5" Grid.Row="3">
+            <local:SButton x:Name="Button_Save" Style="{StaticResource DefaultSButtonStyle}" FIcon="" Content="保存" Height="20" Width="60" Margin="5" />
+            <local:SButton x:Name="Button_Cancel" Style="{StaticResource DefaultSButtonStyle}" FIcon="" Content="取消" Height="20" Width="60" Margin="5" />
+            
+        </StackPanel>
+    </Grid>
+</UserControl>
